@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "194773494556",
+    "project_id": "car-e-wallet-app-37cae",
+    "storage_bucket": "car-e-wallet-app-37cae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194773494556:android:cb7b0134094fe9bc41a8d9",
+        "android_client_info": {
+          "package_name": "com.jabri.car_e_wallet_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194773494556-eg8ihe2u8ci8uiotemu3bvfq9d4rmk1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jabri.car_e_wallet_app",
+            "certificate_hash": "2b086741a49765793cab19abb3a4ae0f1eb97166"
+          }
+        },
+        {
+          "client_id": "194773494556-gkpkp99t4beauog0bjov1ss54kdpecgh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_T0ustJ7jT1HBQU4I21dgrlpfik-JsME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194773494556-gkpkp99t4beauog0bjov1ss54kdpecgh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
