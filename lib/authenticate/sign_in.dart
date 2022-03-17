@@ -1,3 +1,5 @@
+import 'package:car_e_wallet_app/authenticate/register.dart';
+import 'package:car_e_wallet_app/home/home.dart';
 import 'package:car_e_wallet_app/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -95,11 +97,25 @@ class _SignInState extends State<SignIn> {
                           ],
                         ),
                         child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignIn()));
+                          onPressed: () async {
+                            if (_formkey.currentState!.validate()) {
+                              dynamic result = await _auth!
+                                  .signInWithEmailAndPassword(
+                                      email!, password!);
+                              if (result == null) {
+                                setState(() {
+                                  error =
+                                      'Could not sign with those credentials';
+                                });
+                              } else {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()),
+                                  (Route<dynamic> route) => false,
+                                );
+                              }
+                            }
                           },
                           child: Text(
                             'Login',
@@ -110,17 +126,26 @@ class _SignInState extends State<SignIn> {
                       SizedBox(
                         height: 5,
                       ),
-                      Container(
-                          child: Text.rich(
-                        TextSpan(
-                          text: 'or ',
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: 'Sign up',
-                                style: TextStyle(color: Color(0xff613EEA))),
-                          ],
-                        ),
-                      ))
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => Register()),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                        child: Container(
+                            child: Text.rich(
+                          TextSpan(
+                            text: 'or ',
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Sign up',
+                                  style: TextStyle(color: Color(0xff613EEA))),
+                            ],
+                          ),
+                        )),
+                      )
                     ],
                   ),
                 ),

@@ -1,3 +1,5 @@
+import 'package:car_e_wallet_app/authenticate/sign_in.dart';
+import 'package:car_e_wallet_app/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:car_e_wallet_app/services/auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,7 +20,7 @@ class _RegisterState extends State<Register> {
   String? password = '';
   String? error = '';
   String? name = '';
-  String? phone = '';
+  String? phone_number = '';
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class _RegisterState extends State<Register> {
                             val!.isEmpty ? 'Enter your name ' : null,
                         onChanged: (val) {
                           setState(() {
-                            email = val;
+                            name = val;
                           });
                         },
                       ),
@@ -65,7 +67,7 @@ class _RegisterState extends State<Register> {
                             val!.length < 6 ? 'enter your phone number' : null,
                         onChanged: (val) {
                           setState(() {
-                            password = val;
+                            phone_number = val;
                           });
                         },
                       ),
@@ -155,7 +157,7 @@ class _RegisterState extends State<Register> {
                                       width: 5,
                                     ),
                                     Text(
-                                      'Google',
+                                      'Google ',
                                       style:
                                           TextStyle(color: Color(0xff613EEA)),
                                     )
@@ -186,10 +188,18 @@ class _RegisterState extends State<Register> {
                               dynamic result = await _auth!
                                   .registerWithEmailAndPassword(
                                       email!, password!);
+
                               if (result == null) {
                                 setState(() {
                                   error = 'please supply a valid email ';
                                 });
+                              } else {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()),
+                                  (Route<dynamic> route) => false,
+                                );
                               }
                             }
                           },
@@ -205,7 +215,7 @@ class _RegisterState extends State<Register> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Register()));
+                                    builder: (context) => SignIn()));
                           },
                           child: Text(
                             'already have an acount',

@@ -18,40 +18,45 @@ class _AuthenticateState extends State<Authenticate> {
         child: Column(children: [
           Container(
             padding: EdgeInsets.fromLTRB(20, 80, 20, 60),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      '12:22 PM',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 28),
-                    ),
-                    Text('  March 10,  2022')
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.cloud,
-                      color: Color(0xff613EEA),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Text('25 °C')
-                  ],
-                )
-              ],
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        '12:22 PM',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 28),
+                      ),
+                      Text('  March 10,  2022')
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.cloud,
+                        color: Color(0xff613EEA),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text('25 °C')
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
-          Container(
-            height: 150,
-            width: 200,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/logo.png'), fit: BoxFit.cover)),
+          Flexible(
+            fit: FlexFit.loose,
+            child: Container(
+              height: 150,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/logo.png'), fit: BoxFit.cover)),
+            ),
           ),
           // ignore: prefer_const_constructors
           Container(
