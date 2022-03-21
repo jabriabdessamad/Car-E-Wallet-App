@@ -3,7 +3,7 @@ import 'package:car_e_wallet_app/chart.dart';
 import 'package:car_e_wallet_app/home/navbar.dart';
 import 'package:car_e_wallet_app/services/auth.dart';
 import 'package:car_e_wallet_app/wrapper.dart';
-
+import 'package:car_e_wallet_app/parking/parking_service.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -327,7 +327,12 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ParkingService()),
+            );
+          },
           child: Container(
               margin: EdgeInsets.fromLTRB(5, 5, 5, 0),
               decoration: BoxDecoration(
