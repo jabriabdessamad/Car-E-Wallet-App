@@ -10,6 +10,10 @@ class ParkingService extends StatefulWidget {
 }
 
 class _ParkingServiceState extends State<ParkingService> {
+  Color _iconColor1 = Color(0xff806A6A);
+  Color _iconColor2 = Color(0xff806A6A);
+  Color _iconColor3 = Color(0xff806A6A);
+  Color _iconColor4 = Color(0xff806A6A);
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -151,18 +155,32 @@ class _ParkingServiceState extends State<ParkingService> {
                       IconButton(
                         icon: Icon(
                           Icons.home,
-                          color: Color(0xff806A6A),
+                          color: _iconColor1,
                           size: 40,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            _iconColor1 = Color(0xff613EEA);
+                            _iconColor2 = Color(0xff806A6A);
+                            _iconColor3 = Color(0xff806A6A);
+                            _iconColor4 = Color(0xff806A6A);
+                          });
+                        },
                       ),
                       IconButton(
                         icon: Icon(
                           Icons.history,
-                          color: Color(0xff806A6A),
+                          color: _iconColor2,
                           size: 40,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            _iconColor2 = Color(0xff613EEA);
+                            _iconColor1 = Color(0xff806A6A);
+                            _iconColor3 = Color(0xff806A6A);
+                            _iconColor4 = Color(0xff806A6A);
+                          });
+                        },
                       ),
                       TextButton(
                         child: Icon(
@@ -175,18 +193,32 @@ class _ParkingServiceState extends State<ParkingService> {
                       IconButton(
                         icon: Icon(
                           Icons.favorite,
-                          color: Color(0xff806A6A),
+                          color: _iconColor3,
                           size: 40,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            _iconColor3 = Color(0xff613EEA);
+                            _iconColor2 = Color(0xff806A6A);
+                            _iconColor1 = Color(0xff806A6A);
+                            _iconColor4 = Color(0xff806A6A);
+                          });
+                        },
                       ),
                       IconButton(
                         icon: Icon(
                           Icons.more_horiz,
-                          color: Color(0xff806A6A),
+                          color: _iconColor4,
                           size: 40,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            _iconColor4 = Color(0xff613EEA);
+                            _iconColor2 = Color(0xff806A6A);
+                            _iconColor3 = Color(0xff806A6A);
+                            _iconColor1 = Color(0xff806A6A);
+                          });
+                        },
                       ),
                     ],
                   ),
