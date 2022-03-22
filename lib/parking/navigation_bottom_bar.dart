@@ -4,9 +4,9 @@ class RPsSCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint0 = Paint()
-      ..color = Color(0xffF0F1F4)
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 1;
+      ..color = Color(0xff613EEA)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3;
 
     Path path0 = Path();
     path0.moveTo(0, size.height);
