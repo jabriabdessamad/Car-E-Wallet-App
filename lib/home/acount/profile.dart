@@ -1,3 +1,4 @@
+import 'package:car_e_wallet_app/home/acount/settings.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -22,9 +23,14 @@ class _ProfileState extends State<Profile> {
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: Colors.red,
+              color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+            },
           )
         ],
       ),
@@ -81,7 +87,7 @@ class _ProfileState extends State<Profile> {
                                 color:
                                     Theme.of(context).scaffoldBackgroundColor,
                               ),
-                              color: Colors.red,
+                              color: Color(0xFF613EEA),
                             ),
                             child: Icon(Icons.edit, color: Colors.white),
                           ))
@@ -113,7 +119,7 @@ class _ProfileState extends State<Profile> {
                         )),
                     RaisedButton(
                       onPressed: () {},
-                      color: Colors.red,
+                      color: Color(0xFF613EEA),
                       padding: EdgeInsets.symmetric(horizontal: 50),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
