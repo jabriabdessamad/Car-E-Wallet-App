@@ -1,6 +1,7 @@
 import 'package:car_e_wallet_app/authenticate/authenticate.dart';
 import 'package:car_e_wallet_app/chart.dart';
 import 'package:car_e_wallet_app/home/navbar.dart';
+import 'package:car_e_wallet_app/parking/parking.dart';
 import 'package:car_e_wallet_app/services/auth.dart';
 import 'package:car_e_wallet_app/wrapper.dart';
 
@@ -307,12 +308,12 @@ class _HomePageState extends State<HomePage> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                serviceWidget("parking", "Parking\n"),
-                serviceWidget("restaurant", "Restaus\n"),
-                serviceWidget("station de recharge", "Stations\n"),
-                serviceWidget("tram", "Tram\n"),
-                serviceWidget("bus", "Bus\n"),
-                serviceWidget("more", "More\n"),
+                serviceWidget("parking", "Parking\n", Parking()),
+                serviceWidget("restaurant", "Restaus\n", Parking()),
+                serviceWidget("station de recharge", "Stations\n", Parking()),
+                serviceWidget("tram", "Tram\n", Parking()),
+                serviceWidget("bus", "Bus\n", Parking()),
+                serviceWidget("more", "More\n", Parking()),
               ],
             ),
           ),
@@ -323,11 +324,14 @@ class _HomePageState extends State<HomePage> {
 
   // side navbar
 
-  Column serviceWidget(String img, String name) {
+  Column serviceWidget(String img, String name, Widget nextscreen) {
     return Column(
       children: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => nextscreen));
+          },
           child: Container(
               margin: EdgeInsets.fromLTRB(5, 5, 5, 0),
               decoration: BoxDecoration(
