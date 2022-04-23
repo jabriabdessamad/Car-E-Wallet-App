@@ -4,7 +4,7 @@ import 'package:car_e_wallet_app/home/navbar.dart';
 import 'package:car_e_wallet_app/parking/parking.dart';
 import 'package:car_e_wallet_app/services/auth.dart';
 import 'package:car_e_wallet_app/wrapper.dart';
-
+import 'package:car_e_wallet_app/parking/parking_service.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -33,9 +33,9 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                margin: EdgeInsets.fromLTRB(10, 10, 0, 0),
                 height: 100,
                 width: 130,
+                margin: EdgeInsets.fromLTRB(10, 10, 0, 0),
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/logo.png'),
@@ -330,7 +330,9 @@ class _HomePageState extends State<HomePage> {
         TextButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => nextscreen));
+              context,
+              MaterialPageRoute(builder: (context) => ParkingService()),
+            );
           },
           child: Container(
               margin: EdgeInsets.fromLTRB(5, 5, 5, 0),

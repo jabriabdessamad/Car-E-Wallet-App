@@ -1,3 +1,9 @@
+import 'package:car_e_wallet_app/home/acount/account.dart';
+import 'package:car_e_wallet_app/home/help.dart';
+import 'package:car_e_wallet_app/home/home.dart';
+import 'package:car_e_wallet_app/home/portfolio.dart';
+import 'package:car_e_wallet_app/home/settings.dart';
+import 'package:car_e_wallet_app/home/transaction.dart';
 import 'package:car_e_wallet_app/services/auth.dart';
 import 'package:car_e_wallet_app/wrapper.dart';
 import 'package:flutter/material.dart';
@@ -82,26 +88,31 @@ class _NavbarState extends State<Navbar> {
               child: ListView(
                 children: [
                   navigatorTitle(
-                      "Home",
-                      true,
-                      Icon(
-                        Icons.home,
-                        color: Colors.black,
-                      )),
+                    "Home",
+                    true,
+                    Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    ),
+                    HomePage(),
+                  ),
                   navigatorTitle(
-                      "Account",
-                      false,
-                      Icon(
-                        Icons.person,
-                        color: Colors.black,
-                      )),
+                    "Account",
+                    false,
+                    Icon(
+                      Icons.person,
+                      color: Colors.black,
+                    ),
+                    Account(),
+                  ),
                   navigatorTitle(
                       "Transactions",
                       false,
                       Icon(
                         Icons.payment,
                         color: Colors.black,
-                      )),
+                      ),
+                      Transaction()),
                   navigatorTitle(
                     "Protfolio",
                     false,
@@ -109,6 +120,7 @@ class _NavbarState extends State<Navbar> {
                       Icons.show_chart,
                       color: Colors.black,
                     ),
+                    Portfolio(),
                   ),
                   navigatorTitle(
                       "Settings",
@@ -116,14 +128,16 @@ class _NavbarState extends State<Navbar> {
                       Icon(
                         Icons.settings,
                         color: Colors.black,
-                      )),
+                      ),
+                      Settings()),
                   navigatorTitle(
                       "Help",
                       false,
                       Icon(
                         Icons.help,
                         color: Colors.black,
-                      )),
+                      ),
+                      Help()),
                 ],
               ),
             ),
@@ -166,7 +180,7 @@ class _NavbarState extends State<Navbar> {
     );
   }
 
-  Row navigatorTitle(String name, bool isSelected, Icon icon) {
+  Row navigatorTitle(String name, bool isSelected, Icon icon, Widget nextpage) {
     return Row(
       children: [
         (isSelected)
@@ -184,7 +198,12 @@ class _NavbarState extends State<Navbar> {
           height: 60,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => nextpage),
+            );
+          },
           child: Row(
             children: [
               icon,
