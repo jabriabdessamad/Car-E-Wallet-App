@@ -1,4 +1,11 @@
+import 'package:car_e_wallet_app/favoriteParking/FavoriteParking.dart';
+import 'package:car_e_wallet_app/moreOptions/more.dart';
+import 'package:car_e_wallet_app/myParking/myParking.dart';
+import 'package:car_e_wallet_app/parking/ParkingIntroduction.dart';
+import 'package:car_e_wallet_app/parking/rpscustomerpainter.dart';
+import 'package:car_e_wallet_app/parking/searchParking.dart';
 import 'package:flutter/material.dart';
+import 'package:car_e_wallet_app/parking/navigation_bottom_bar.dart';
 
 class Parking extends StatefulWidget {
   const Parking({Key? key}) : super(key: key);
@@ -10,71 +17,65 @@ class Parking extends StatefulWidget {
 class _ParkingState extends State<Parking> {
   TextEditingController controller = TextEditingController();
   bool isVisible = true;
+  int _current_index = 0;
+  List<Widget> _widgetOptions = [
+    ParkingIntroduction(),
+    MyParking(),
+    FavoriteParking(),
+    More()
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-          child: Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 5 + 30,
-            child: Stack(
-              children: [
-                Container(
-                    height: MediaQuery.of(context).size.height / 5,
-                    color: Color(0xff38267E)),
-                Positioned(
-                  left: (MediaQuery.of(context).size.width - 280) / 2,
-                  top: 100,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.all(Radius.circular(7)),
-                      boxShadow: [
-                        BoxShadow(
-                          color:
-                              Color.fromARGB(255, 97, 97, 97).withOpacity(0.3),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    height: 60,
-                    width: 280,
-                    child: TextFormField(
-                      controller: controller,
-                      onChanged: (text) {
-                        setState(() {
-                          controller.text.isEmpty
-                              ? isVisible = true
-                              : isVisible = false;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(10, 20, 0, 0),
-                        border: InputBorder.none,
-                        hintText: 'Enter adress or place',
-                        prefixIcon: Visibility(
-                          visible: isVisible,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(10, 13, 0, 0),
-                            child: Icon(
-                              Icons.search,
-                              color: Color(0xff38267E),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ],
-      )),
+    double screen_height = MediaQuery.of(context).size.height;
+    double screen_width = MediaQuery.of(context).size.width;
+    return SafeArea(
+      child: Scaffold(
+        body: _widgetOptions.elementAt(_current_index),
+        bottomNavigationBar: BottomNavigationBar(
+            unselectedFontSize: 13,
+            selectedFontSize: 16,
+            unselectedItemColor: Colors.grey[400],
+            fixedColor: Colors.white,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _current_index,
+            backgroundColor: Color(0xFF13054E),
+            onTap: (index) {
+              setState(() {
+                _current_index = index;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  size: 30,
+                ),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.history,
+                  size: 30,
+                ),
+                label: 'My parking',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.star,
+                  size: 30,
+                ),
+                label: 'favorite',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.more_horiz,
+                  size: 30,
+                ),
+                label: 'More',
+              ),
+            ]),
+      ),
     );
   }
 }
