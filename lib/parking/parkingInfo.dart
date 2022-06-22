@@ -3,7 +3,21 @@ import 'package:car_e_wallet_app/parking/parking_payment.dart';
 import 'package:flutter/material.dart';
 
 class ParkingInfo extends StatefulWidget {
-  const ParkingInfo({Key? key}) : super(key: key);
+  ParkingInfo(
+      {Key? key,
+      this.parkingAddress,
+      this.distance,
+      this.price,
+      this.entryDateTime,
+      this.exitDateTime,
+      this.duration})
+      : super(key: key);
+  String? parkingAddress;
+  String? price;
+  String? distance;
+  DateTime? entryDateTime;
+  DateTime? exitDateTime;
+  String? duration;
 
   @override
   State<ParkingInfo> createState() => _ParkingInfoState();
@@ -14,6 +28,9 @@ class _ParkingInfoState extends State<ParkingInfo> {
   Widget build(BuildContext context) {
     double screen_height = MediaQuery.of(context).size.height;
     double screen_width = MediaQuery.of(context).size.width;
+    DateTime entryDateTime = widget.entryDateTime ?? DateTime.now();
+    DateTime exitDateTime = widget.exitDateTime ?? DateTime.now();
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -63,7 +80,7 @@ class _ParkingInfoState extends State<ParkingInfo> {
                                         padding:
                                             EdgeInsets.fromLTRB(15, 10, 0, 0),
                                         child: Text(
-                                          'City Club Hassan 2',
+                                          '${widget.parkingAddress}',
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 20,
@@ -87,7 +104,7 @@ class _ParkingInfoState extends State<ParkingInfo> {
                                         padding:
                                             EdgeInsets.fromLTRB(0, 5, 15, 0),
                                         child: Text(
-                                          ' 6 min walk ',
+                                          ' ${widget.distance} ',
                                           style: TextStyle(
                                               color: Colors.grey[700],
                                               fontSize: 18,
@@ -175,13 +192,18 @@ class _ParkingInfoState extends State<ParkingInfo> {
                           padding: EdgeInsets.only(left: 10),
                           child: Row(
                             children: [
-                              Text('3:30PM',
+                              Text(
+                                  '${entryDateTime.month.toString().padLeft(2, '0')}/${entryDateTime.day.toString().padLeft(2, '0')}  ${entryDateTime.hour.toString().padLeft(2, '0')}:${entryDateTime.minute.toString().padLeft(2, '0')}',
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w800,
                                       color: Colors.black)),
-                              Icon(Icons.arrow_right_alt),
-                              Text('3:30PM',
+                              Icon(
+                                Icons.arrow_right_alt,
+                                size: 30,
+                              ),
+                              Text(
+                                  '${exitDateTime.month.toString().padLeft(2, '0')}/${exitDateTime.day.toString().padLeft(2, '0')}  ${exitDateTime.hour.toString().padLeft(2, '0')}:${exitDateTime.minute.toString().padLeft(2, '0')}',
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w800,
@@ -214,7 +236,7 @@ class _ParkingInfoState extends State<ParkingInfo> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Text('3 hours',
+                            Text('${widget.duration}',
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w800,

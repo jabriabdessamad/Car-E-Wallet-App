@@ -1,9 +1,19 @@
-import 'package:car_e_wallet_app/parking/map.dart';
+import 'package:car_e_wallet_app/parking/map/map.dart';
 import 'package:car_e_wallet_app/parking/parkingInfo.dart';
 import 'package:flutter/material.dart';
 
 class ParkingsMap extends StatefulWidget {
-  const ParkingsMap({Key? key}) : super(key: key);
+  DateTime? entryDateTime;
+  DateTime? exitDateTime;
+  String? place;
+  String? duration;
+  ParkingsMap(
+      {Key? key,
+      this.place,
+      this.entryDateTime,
+      this.exitDateTime,
+      this.duration})
+      : super(key: key);
 
   @override
   State<ParkingsMap> createState() => _ParkingsMapState();
@@ -15,6 +25,8 @@ class _ParkingsMapState extends State<ParkingsMap> {
   Widget build(BuildContext context) {
     double screen_height = MediaQuery.of(context).size.height;
     double screen_width = MediaQuery.of(context).size.width;
+    DateTime entryDateTime = widget.entryDateTime ?? DateTime.now();
+    DateTime exitDateTime = widget.exitDateTime ?? DateTime.now();
 
     return SafeArea(
       child: Scaffold(
@@ -45,7 +57,7 @@ class _ParkingsMapState extends State<ParkingsMap> {
                         Container(
                             padding: EdgeInsets.only(left: 20),
                             child: Text(
-                              'Rabat',
+                              widget.place ?? '',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 20,
@@ -57,14 +69,14 @@ class _ParkingsMapState extends State<ParkingsMap> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
-                                  '3:30PM',
+                                  '${entryDateTime.hour.toString().padLeft(2, '0')}:${entryDateTime.minute.toString().padLeft(2, '0')} ',
                                   style: TextStyle(
                                       color: Color(0xFF613EEA),
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600),
                                 ),
                                 Text(
-                                  'mars 3',
+                                  '${entryDateTime.month.toString().padLeft(2, '0')} / ${entryDateTime.day.toString().padLeft(2, '0')}',
                                   style: TextStyle(
                                       color: Color(0xFF613EEA),
                                       fontSize: 15,
@@ -87,14 +99,14 @@ class _ParkingsMapState extends State<ParkingsMap> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
-                                  '3:30PM',
+                                  '${exitDateTime.hour.toString().padLeft(2, '0')}:${exitDateTime.minute.toString().padLeft(2, '0')} ',
                                   style: TextStyle(
                                       color: Color(0xFF613EEA),
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600),
                                 ),
                                 Text(
-                                  'mars 3',
+                                  '${exitDateTime.month.toString().padLeft(2, '0')} / ${exitDateTime.day.toString().padLeft(2, '0')}',
                                   style: TextStyle(
                                       color: Color(0xFF613EEA),
                                       fontSize: 15,
@@ -109,128 +121,6 @@ class _ParkingsMapState extends State<ParkingsMap> {
                         )
                       ]),
                 )),
-            Positioned(
-              bottom: 10,
-              right: screen_width * 0.05,
-              child: Row(
-                children: [
-                  Container(
-                    height: 150,
-                    width: screen_width * 0.9,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF0F1F4),
-                      borderRadius: BorderRadius.all(Radius.circular(7)),
-                      boxShadow: [
-                        BoxShadow(
-                          color:
-                              Color.fromARGB(255, 97, 97, 97).withOpacity(0.3),
-                          spreadRadius: 2,
-                          blurRadius: 2,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: Column(children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                              padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
-                              child: Text(
-                                'City Club Hassan 2',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900),
-                              )),
-                          Container(
-                              padding: EdgeInsets.fromLTRB(0, 5, 15, 0),
-                              child: Text(
-                                ' 17.00 DH',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900),
-                              ))
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Icon(
-                            Icons.directions_walk_outlined,
-                            color: Colors.grey[700],
-                          ),
-                          Container(
-                              padding: EdgeInsets.fromLTRB(0, 5, 15, 0),
-                              child: Text(
-                                ' 6 min walk ',
-                                style: TextStyle(
-                                    color: Colors.grey[700],
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w900),
-                              ))
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                                decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(7)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color.fromARGB(255, 97, 97, 97)
-                                          .withOpacity(0.5),
-                                      spreadRadius: 2,
-                                      blurRadius: 2,
-                                      offset: Offset(
-                                          0, 3), // changes position of shadow
-                                    ),
-                                  ],
-                                ),
-                                height: 50,
-                                width: screen_width * 0.7,
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => ParkingInfo()),
-                                    );
-                                  },
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        child: Text("Book Here",
-                                            style: TextStyle(
-                                                fontSize: 23,
-                                                fontWeight: FontWeight.w700,
-                                                color: Color(0xFF613EEA))),
-                                      )
-                                    ],
-                                  ),
-                                )),
-                          ],
-                        ),
-                      )
-                    ]),
-                  ),
-                ],
-              ),
-            )
           ]),
         ),
         bottomNavigationBar: BottomNavigationBar(

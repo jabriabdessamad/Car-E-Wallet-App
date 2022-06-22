@@ -1,3 +1,4 @@
+import 'package:car_e_wallet_app/home/acount/model/my_cars.dart';
 import 'package:car_e_wallet_app/home/acount/profile.dart';
 
 import 'package:flutter/material.dart';
@@ -94,6 +95,10 @@ class _AccountState extends State<Account> {
                           _cardColor2 = Color(0xff613EEA);
                           _textColor2 = Colors.white;
                         });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyCars()),
+                        );
                       },
                     ),
                     color: _cardColor2,

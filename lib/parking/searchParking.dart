@@ -1,10 +1,12 @@
-import 'package:car_e_wallet_app/parking/map.dart';
+import 'package:car_e_wallet_app/parking/map/map.dart';
 import 'package:car_e_wallet_app/parking/timeSelecting.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class SearchParking extends StatefulWidget {
-  const SearchParking({Key? key}) : super(key: key);
+  String? place = '';
+
+  SearchParking({Key? key, this.place}) : super(key: key);
 
   @override
   State<SearchParking> createState() => _SearchParkingState();
@@ -54,6 +56,7 @@ class _SearchParkingState extends State<SearchParking> {
                             controller.text.isEmpty
                                 ? isVisible = true
                                 : isVisible = false;
+                            widget.place = text;
                           });
                         },
                         decoration: InputDecoration(
@@ -270,11 +273,15 @@ class _SearchParkingState extends State<SearchParking> {
                         width: screen_width * 0.6,
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => TimeSelecting()),
-                            );
+                            if (widget.place != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TimeSelecting(
+                                          place: widget.place,
+                                        )),
+                              );
+                            }
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

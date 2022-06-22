@@ -3,7 +3,9 @@ import 'package:car_e_wallet_app/parking/searchParking.dart';
 import 'package:flutter/material.dart';
 
 class TimeSelecting extends StatefulWidget {
-  const TimeSelecting({Key? key}) : super(key: key);
+  String? duration;
+  String? place;
+  TimeSelecting({Key? key, this.place, this.duration}) : super(key: key);
 
   @override
   State<TimeSelecting> createState() => _TimeSelectingState();
@@ -24,6 +26,8 @@ class _TimeSelectingState extends State<TimeSelecting> {
     final entryMinutes = entryDateTime!.minute.toString().padLeft(2, '0');
     final exitHours = exitDateTime!.hour.toString().padLeft(2, '0');
     final exitMinutes = exitDateTime!.minute.toString().padLeft(2, '0');
+    final duration =
+        exitDateTime!.difference(entryDateTime!).inHours.toString();
 
     return SafeArea(
       child: Scaffold(
@@ -81,7 +85,7 @@ class _TimeSelectingState extends State<TimeSelecting> {
                                 ),
                                 Container(
                                   child: Text(
-                                    'Rabat',
+                                    widget.place ?? 'Rabat',
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 18,
@@ -266,8 +270,7 @@ class _TimeSelectingState extends State<TimeSelecting> {
                   children: [
                     Container(
                       padding: EdgeInsets.only(right: 30),
-                      child: Text(
-                          "Duration:${exitDateTime!.difference(entryDateTime!).inHours} h",
+                      child: Text("Duration:${duration} h",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
@@ -304,7 +307,10 @@ class _TimeSelectingState extends State<TimeSelecting> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ParkingsMap()),
+                                    builder: (context) => ParkingsMap(
+                                          place: widget.place,
+                                          duration: duration,
+                                        )),
                               );
                             },
                             child: Row(
@@ -382,7 +388,7 @@ class _TimeSelectingState extends State<TimeSelecting> {
     if (time == null) return;
 
     final dateTime =
-        DateTime(date.year, date.month, date.hour, time.hour, time.minute);
+        DateTime(date.year, date.month, date.day, time.hour, time.minute);
     setState(() => entryDateTime = dateTime);
   }
 
@@ -393,11 +399,8 @@ class _TimeSelectingState extends State<TimeSelecting> {
     TimeOfDay? time = await pickTime();
     if (time == null) return;
 
-    print(date.month);
-
     final dateTime =
-        DateTime(date.year, date.month, date.hour, time.hour, time.minute);
-    print(dateTime);
+        DateTime(date.year, date.month, date.day, time.hour, time.minute);
     setState(() => exitDateTime = dateTime);
   }
 
