@@ -224,61 +224,33 @@ class _ParkingInfoState extends State<ParkingInfo> {
                       ],
                     ),
                     Container(
-                      height: screen_height * 0.11,
-                      width: screen_width * 0.7,
+                      height: screen_height * 0.09,
+                      width: screen_width * 0.6,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Column(children: [
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('${widget.duration}',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black)),
-                            Text('20 DH',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black))
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text('6 hours',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.grey)),
-                            Text('30 DH',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.grey))
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text('10 hours',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.grey)),
-                            Text('40 DH',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.grey))
-                          ],
-                        )
-                      ]),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('${widget.duration} hour :',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.black)),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('20 DH',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900,
+                                        color: Colors.orange))
+                              ],
+                            ),
+                          ]),
                     ),
                   ]),
                 ),
@@ -372,7 +344,14 @@ class _ParkingInfoState extends State<ParkingInfo> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ParkingPayment()),
+                                    builder: (context) => ParkingPayment(
+                                          parkingAddress: widget.parkingAddress,
+                                          price: widget.price,
+                                          entryDateTime: entryDateTime,
+                                          exitDateTime: exitDateTime,
+                                          distance: widget.distance,
+                                          duration: widget.duration,
+                                        )),
                               );
                             },
                             child: Row(

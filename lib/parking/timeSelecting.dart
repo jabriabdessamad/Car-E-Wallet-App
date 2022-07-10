@@ -3,9 +3,11 @@ import 'package:car_e_wallet_app/parking/searchParking.dart';
 import 'package:flutter/material.dart';
 
 class TimeSelecting extends StatefulWidget {
-  String? duration;
   String? place;
-  TimeSelecting({Key? key, this.place, this.duration}) : super(key: key);
+  TimeSelecting({
+    Key? key,
+    this.place,
+  }) : super(key: key);
 
   @override
   State<TimeSelecting> createState() => _TimeSelectingState();
@@ -26,8 +28,11 @@ class _TimeSelectingState extends State<TimeSelecting> {
     final entryMinutes = entryDateTime!.minute.toString().padLeft(2, '0');
     final exitHours = exitDateTime!.hour.toString().padLeft(2, '0');
     final exitMinutes = exitDateTime!.minute.toString().padLeft(2, '0');
-    final duration =
-        exitDateTime!.difference(entryDateTime!).inHours.toString();
+    final duration = exitDateTime!
+        .add(Duration(minutes: 1))
+        .difference(entryDateTime!)
+        .inHours
+        .toString();
 
     return SafeArea(
       child: Scaffold(

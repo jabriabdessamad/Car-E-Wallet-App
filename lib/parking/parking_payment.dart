@@ -2,7 +2,21 @@ import 'package:car_e_wallet_app/parking/bookingInfo.dart';
 import 'package:flutter/material.dart';
 
 class ParkingPayment extends StatefulWidget {
-  const ParkingPayment({Key? key}) : super(key: key);
+  String? parkingAddress;
+  String? price;
+  String? distance;
+  DateTime? entryDateTime;
+  DateTime? exitDateTime;
+  String? duration;
+  ParkingPayment(
+      {Key? key,
+      this.parkingAddress,
+      this.distance,
+      this.price,
+      this.entryDateTime,
+      this.exitDateTime,
+      this.duration})
+      : super(key: key);
 
   @override
   State<ParkingPayment> createState() => _ParkingPaymentState();
@@ -13,6 +27,8 @@ class _ParkingPaymentState extends State<ParkingPayment> {
   Widget build(BuildContext context) {
     double screen_height = MediaQuery.of(context).size.height;
     double screen_width = MediaQuery.of(context).size.width;
+    DateTime entryDateTime = widget.entryDateTime ?? DateTime.now();
+    DateTime exitDateTime = widget.exitDateTime ?? DateTime.now();
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -60,7 +76,7 @@ class _ParkingPaymentState extends State<ParkingPayment> {
                                       padding:
                                           EdgeInsets.fromLTRB(15, 10, 0, 0),
                                       child: Text(
-                                        'City Club Hassan 2',
+                                        '${widget.parkingAddress}',
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 20,
@@ -83,7 +99,7 @@ class _ParkingPaymentState extends State<ParkingPayment> {
                                   Container(
                                       padding: EdgeInsets.fromLTRB(0, 5, 15, 0),
                                       child: Text(
-                                        ' 6 min walk ',
+                                        ' ${widget.distance} ',
                                         style: TextStyle(
                                             color: Colors.grey[700],
                                             fontSize: 18,
@@ -163,132 +179,112 @@ class _ParkingPaymentState extends State<ParkingPayment> {
                 decoration: BoxDecoration(
                     color: Color(0xFFE9E6E6),
                     borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Row(
-                          children: [
-                            Text('3:30PM',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black)),
-                            Icon(Icons.arrow_right_alt),
-                            Text('3:30PM',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w800,
-                                    color: Colors.black)),
-                          ],
-                        ),
+                        height: screen_height * 0.1,
+                        width: screen_width * 0.7,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(width: 1, color: Colors.black)),
+                        child: Column(children: [
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('${widget.duration} h :',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black)),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text('${widget.price} ',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.orange))
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                      '${entryDateTime.month.toString().padLeft(2, '0')}/${entryDateTime.day.toString().padLeft(2, '0')}  ${entryDateTime.hour.toString().padLeft(2, '0')}:${entryDateTime.minute.toString().padLeft(2, '0')}',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w800,
+                                          color: Colors.black)),
+                                  Icon(
+                                    Icons.arrow_right_alt,
+                                    size: 30,
+                                  ),
+                                  Text(
+                                      '${exitDateTime.month.toString().padLeft(2, '0')}/${exitDateTime.day.toString().padLeft(2, '0')}  ${exitDateTime.hour.toString().padLeft(2, '0')}:${exitDateTime.minute.toString().padLeft(2, '0')}',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w800,
+                                          color: Colors.black)),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ]),
                       ),
-                      Container(
-                        padding: EdgeInsets.only(right: 10),
-                        child: TextButton(
-                            onPressed: () {},
-                            child: Text('Edit Time',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    color: Color(0xFF613EEA)))),
-                      )
-                    ],
-                  ),
-                  Container(
-                    height: screen_height * 0.08,
-                    width: screen_width * 0.6,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(width: 1, color: Colors.black)),
-                    child: Column(children: [
                       SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text('3 hours',
+                          Text('Service Fee',
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w800,
                                   color: Colors.black)),
-                          Text('20 DH',
+                          Text('${widget.price}',
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w800,
                                   color: Colors.black))
                         ],
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 1,
+                        width: screen_width * 0.5,
+                        color: Colors.black,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Row(
-                            children: [
-                              Text('3:30PM',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w800,
-                                      color: Colors.black)),
-                              Icon(Icons.arrow_right_alt),
-                              Text('3:30PM',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w800,
-                                      color: Colors.black)),
-                            ],
-                          ),
+                          Text('Order Total',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.black)),
+                          Text('${widget.price}',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.black))
                         ],
                       ),
                     ]),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text('Service Fee',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black)),
-                      Text('20 DH',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black))
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 1,
-                    width: screen_width * 0.5,
-                    color: Colors.black,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text('Order Total',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black)),
-                      Text('20 DH',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black))
-                    ],
-                  ),
-                ]),
               ),
               SizedBox(
                 height: screen_height * 0.07,
@@ -319,7 +315,14 @@ class _ParkingPaymentState extends State<ParkingPayment> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => BookingInfo()),
+                                  builder: (context) => BookingInfo(
+                                        parkingAddress: widget.parkingAddress,
+                                        price: widget.price,
+                                        entryDateTime: entryDateTime,
+                                        exitDateTime: exitDateTime,
+                                        distance: widget.distance,
+                                        duration: widget.duration,
+                                      )),
                             );
                           },
                           child: Row(

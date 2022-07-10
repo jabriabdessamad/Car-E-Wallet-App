@@ -5,7 +5,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'map_markers.dart';
 
-const MARKER_SIZE_EXPANDED = 62;
+const MARKER_SIZE_EXPANDED = 65;
 const MARKER_SIZE_SHRIKED = 42;
 
 class MapWidget extends StatefulWidget {
@@ -130,12 +130,17 @@ class LocationMarker extends StatelessWidget {
   }
 }
 
-class ParkingDetails extends StatelessWidget {
+class ParkingDetails extends StatefulWidget {
   ParkingDetails({Key? key, required this.mapMarker, this.duration})
       : super(key: key);
   final MapMarker mapMarker;
   String? duration;
 
+  @override
+  State<ParkingDetails> createState() => _ParkingDetailsState();
+}
+
+class _ParkingDetailsState extends State<ParkingDetails> {
   @override
   Widget build(BuildContext context) {
     double screen_height = MediaQuery.of(context).size.height;
@@ -167,7 +172,7 @@ class ParkingDetails extends StatelessWidget {
                     Container(
                         padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
                         child: Text(
-                          '${mapMarker.address}',
+                          '${widget.mapMarker.address}',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
@@ -176,7 +181,7 @@ class ParkingDetails extends StatelessWidget {
                     Container(
                         padding: EdgeInsets.fromLTRB(0, 5, 15, 0),
                         child: Text(
-                          '${mapMarker.price}',
+                          '${widget.mapMarker.price}',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
@@ -199,7 +204,7 @@ class ParkingDetails extends StatelessWidget {
                     Container(
                         padding: EdgeInsets.fromLTRB(0, 5, 15, 0),
                         child: Text(
-                          '${mapMarker.distance}',
+                          '${widget.mapMarker.distance}',
                           style: TextStyle(
                               color: Colors.grey[700],
                               fontSize: 18,
@@ -233,14 +238,15 @@ class ParkingDetails extends StatelessWidget {
                           width: screen_width * 0.6,
                           child: TextButton(
                             onPressed: () {
+                              print(widget.duration);
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => ParkingInfo(
-                                      parkingAddress: mapMarker.address,
-                                      distance: mapMarker.distance,
-                                      price: mapMarker.price,
-                                      duration: duration,
+                                      parkingAddress: widget.mapMarker.address,
+                                      distance: widget.mapMarker.distance,
+                                      price: widget.mapMarker.price,
+                                      duration: widget.duration,
                                     ),
                                   ));
                             },

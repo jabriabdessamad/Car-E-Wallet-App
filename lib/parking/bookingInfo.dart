@@ -1,9 +1,28 @@
 import 'dart:async';
+import 'package:car_e_wallet_app/parking/ParkingIntroduction.dart';
+import 'package:car_e_wallet_app/parking/map/directionsMap.dart';
+import 'package:car_e_wallet_app/parking/map/map.dart';
+import 'package:car_e_wallet_app/parking/parking.dart';
+import 'package:car_e_wallet_app/parking/parkingsMap.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/material.dart';
 
 class BookingInfo extends StatefulWidget {
-  const BookingInfo({Key? key}) : super(key: key);
+  String? parkingAddress;
+  String? price;
+  String? distance;
+  DateTime? entryDateTime;
+  DateTime? exitDateTime;
+  String? duration;
+  BookingInfo(
+      {Key? key,
+      this.parkingAddress,
+      this.distance,
+      this.price,
+      this.entryDateTime,
+      this.exitDateTime,
+      this.duration})
+      : super(key: key);
 
   @override
   State<BookingInfo> createState() => _BookingInfoState();
@@ -199,7 +218,14 @@ class _BookingInfoState extends State<BookingInfo> {
                   style: TextStyle(fontSize: 15),
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DirectionsMap(
+                                    parkingAddress: widget.parkingAddress,
+                                  )));
+                    },
                     child:
                         Text("Get Directions", style: TextStyle(fontSize: 18)))
               ],
@@ -231,8 +257,7 @@ class _BookingInfoState extends State<BookingInfo> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => BookingInfo()),
+                            MaterialPageRoute(builder: (context) => Parking()),
                           );
                         },
                         child: Row(

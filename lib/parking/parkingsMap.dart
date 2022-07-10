@@ -27,12 +27,13 @@ class _ParkingsMapState extends State<ParkingsMap> {
     double screen_width = MediaQuery.of(context).size.width;
     DateTime entryDateTime = widget.entryDateTime ?? DateTime.now();
     DateTime exitDateTime = widget.exitDateTime ?? DateTime.now();
-
     return SafeArea(
       child: Scaffold(
         body: Container(
           child: Stack(children: [
-            MapWidget(),
+            MapWidget(
+              duration: widget.duration,
+            ),
             Positioned(
                 left: (MediaQuery.of(context).size.width - 340) / 2,
                 top: 30,
