@@ -55,6 +55,7 @@ dev_dependencies:
   flutter_map: ^1.0.0
   http: ^0.13.4
   logger: ^1.1.0
+  flutter_secure_storage: ^5.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

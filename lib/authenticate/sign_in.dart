@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:car_e_wallet_app/authenticate/register.dart';
 import 'package:car_e_wallet_app/home/home.dart';
 import 'package:car_e_wallet_app/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:car_e_wallet_app/services/API/NetwrkHandler.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -15,9 +19,18 @@ class _SignInState extends State<SignIn> {
   final AuthService? _auth = AuthService();
   final _formkey = GlobalKey<FormState>();
 
+  NetworkHandler networkHandler = NetworkHandler();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   String? email = '';
   String? password = '';
   String? error = '';
+  String? errorText;
+  bool validate = false;
+  bool circular = false;
+
+  final storage = new FlutterSecureStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +59,9 @@ class _SignInState extends State<SignIn> {
                   child: Column(
                     children: [
                       TextFormField(
-                        decoration: InputDecoration(hintText: 'email'),
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                            hintText: 'email', errorText: errorText),
                         validator: (val) =>
                             val!.isEmpty ? 'Enter an email' : null,
                         onChanged: (val) {
@@ -59,7 +74,11 @@ class _SignInState extends State<SignIn> {
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(hintText: 'password'),
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                            hintText: 'password', errorText: errorText),
+                        validator: (val) =>
+                            val!.isEmpty ? 'Enter password' : null,
                         onChanged: (val) {
                           setState(() {
                             password = val;
@@ -98,29 +117,70 @@ class _SignInState extends State<SignIn> {
                         ),
                         child: TextButton(
                           onPressed: () async {
+                            setState(() {
+                              circular = true;
+                            });
                             if (_formkey.currentState!.validate()) {
-                              dynamic result = await _auth!
-                                  .signInWithEmailAndPassword(
-                                      email!, password!);
-                              if (result == null) {
+                              Map<String, String> data = {
+                                "email": _emailController.text,
+                                "password": _passwordController.text
+                              };
+                              var response =
+                                  await networkHandler.post('user/login', data);
+                              if (response.statusCode == 200 ||
+                                  response.statusCode == 201) {
+                                Map<String, dynamic> output =
+                                    json.decode(response.body);
+
+                                print(output["token"]);
+                                await storage.write(
+                                    key: "token", value: output["token"]);
                                 setState(() {
-                                  error =
-                                      'Could not sign with those credentials';
+                                  validate = true;
+                                  circular = false;
                                 });
-                              } else {
                                 Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()),
-                                  (Route<dynamic> route) => false,
-                                );
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage()),
+                                    (route) => false);
+                              } else {
+                                String output = json.decode(response.body);
+                                setState(() {
+                                  validate = false;
+                                  errorText = output;
+                                  circular = false;
+                                });
                               }
+                              // dynamic result = await _auth!
+                              //     .signInWithEmailAndPassword(
+                              //         email!, password!);
+                              // if (result == null) {
+                              //   setState(() {
+                              //     error =
+                              //         'Could not sign with those credentials';
+                              //   });
+                              // } else {
+                              //   Navigator.pushAndRemoveUntil(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => HomePage()),
+                              //     (Route<dynamic> route) => false,
+                              //   );
+                              // }
+
+                            } else {
+                              setState(() {
+                                circular = false;
+                              });
                             }
                           },
-                          child: Text(
-                            'Login',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                          child: circular
+                              ? CircularProgressIndicator()
+                              : Text(
+                                  'Login',
+                                  style: TextStyle(color: Colors.white),
+                                ),
                         ),
                       ),
                       SizedBox(

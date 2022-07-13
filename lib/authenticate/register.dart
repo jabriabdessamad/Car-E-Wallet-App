@@ -3,6 +3,7 @@ import 'package:car_e_wallet_app/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:car_e_wallet_app/services/auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:car_e_wallet_app/services/API/NetwrkHandler.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -14,6 +15,11 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final AuthService? _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  NetworkHandler networkHandler = NetworkHandler();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _phoneNumberController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   //text field state
   String? email = '';
@@ -21,13 +27,18 @@ class _RegisterState extends State<Register> {
   String? error = '';
   String? name = '';
   String? phone_number = '';
+  String? errorText;
+  bool validate = false;
+  bool circular = false;
 
   @override
   Widget build(BuildContext context) {
+    double screen_height = MediaQuery.of(context).size.height;
+    double screen_width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
           color: Colors.grey[200],
           child: Column(
             children: [
@@ -41,7 +52,7 @@ class _RegisterState extends State<Register> {
                         height: 20,
                       ),
                       Container(
-                        height: 150,
+                        height: screen_height * 0.2,
                         width: 200,
                         decoration: BoxDecoration(
                             image: DecorationImage(
@@ -49,6 +60,7 @@ class _RegisterState extends State<Register> {
                                 fit: BoxFit.cover)),
                       ),
                       TextFormField(
+                        controller: _nameController,
                         decoration: InputDecoration(hintText: 'full name'),
                         validator: (val) =>
                             val!.isEmpty ? 'Enter your name ' : null,
@@ -62,6 +74,7 @@ class _RegisterState extends State<Register> {
                         height: 20,
                       ),
                       TextFormField(
+                        controller: _phoneNumberController,
                         decoration: InputDecoration(hintText: 'phone number'),
                         validator: (val) =>
                             val!.length < 6 ? 'enter your phone number' : null,
@@ -75,9 +88,11 @@ class _RegisterState extends State<Register> {
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(hintText: 'email'),
-                        validator: (val) =>
-                            val!.isEmpty ? 'Enter an email' : null,
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          hintText: 'email',
+                          errorText: validate ? null : errorText,
+                        ),
                         onChanged: (val) {
                           setState(() {
                             email = val;
@@ -88,6 +103,7 @@ class _RegisterState extends State<Register> {
                         height: 20,
                       ),
                       TextFormField(
+                        controller: _passwordController,
                         decoration: InputDecoration(hintText: 'password'),
                         obscureText: true,
                         validator: (val) => val!.length < 6
@@ -166,49 +182,76 @@ class _RegisterState extends State<Register> {
                               )
                             ]),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(top: 30),
-                        width: 260,
-                        decoration: BoxDecoration(
-                          color: Color(0xff38267E),
-                          borderRadius: BorderRadius.all(Radius.circular(7)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: TextButton(
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              dynamic result = await _auth!
-                                  .registerWithEmailAndPassword(
-                                      email!, password!);
+                      circular
+                          ? CircularProgressIndicator()
+                          : Container(
+                              margin: EdgeInsets.only(top: 30),
+                              width: 260,
+                              decoration: BoxDecoration(
+                                color: Color(0xff38267E),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(7)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(
+                                        0, 3), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              child: TextButton(
+                                onPressed: () async {
+                                  setState(() {
+                                    circular = true;
+                                  });
+                                  await CheckUser();
+                                  if (_formKey.currentState!.validate() &&
+                                      validate) {
+                                    Map<String, String> data = {
+                                      "username": _nameController.text,
+                                      "email": _emailController.text,
+                                      "phonenumber":
+                                          _phoneNumberController.text,
+                                      "password": _passwordController.text
+                                    };
+                                    print(data);
+                                    await networkHandler.post(
+                                        "user/register", data);
+                                    setState(() {
+                                      circular = false;
+                                    });
 
-                              if (result == null) {
-                                setState(() {
-                                  error = 'please supply a valid email ';
-                                });
-                              } else {
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()),
-                                  (Route<dynamic> route) => false,
-                                );
-                              }
-                            }
-                          },
-                          child: Text(
-                            'Sign up',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ),
-                      ),
+                                    // dynamic result = await _auth!
+                                    //     .registerWithEmailAndPassword(
+                                    //         email!, password!);
+
+                                    // if (result == null) {
+                                    //   setState(() {
+                                    //     error = 'please supply a valid email ';
+                                    //   });
+                                    // } else {
+                                    //   Navigator.pushAndRemoveUntil(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => HomePage()),
+                                    //     (Route<dynamic> route) => false,
+                                    //   );
+                                    // }
+                                  } else {
+                                    setState(() {
+                                      circular = false;
+                                    });
+                                  }
+                                },
+                                child: Text(
+                                  'Sign up',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
+                                ),
+                              ),
+                            ),
                       Container(
                         child: TextButton(
                           onPressed: () {
@@ -237,5 +280,27 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+  }
+
+  CheckUser() async {
+    if (_emailController.text.length == 0) {
+      setState(() {
+        validate = false;
+        errorText = 'Please enter your email';
+      });
+    } else {
+      var response =
+          await networkHandler.get("user/checkemail/${_emailController.text}");
+      if (response['status']) {
+        setState(() {
+          validate = false;
+          errorText = 'email already used';
+        });
+      } else {
+        setState(() {
+          validate = true;
+        });
+      }
+    }
   }
 }
