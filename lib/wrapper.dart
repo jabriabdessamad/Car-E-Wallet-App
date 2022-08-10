@@ -1,23 +1,39 @@
 import 'package:car_e_wallet_app/authenticate/authenticate.dart';
-import 'package:car_e_wallet_app/authenticate/register.dart';
-import 'package:car_e_wallet_app/authenticate/sign_in.dart';
 import 'package:car_e_wallet_app/home/home.dart';
-import 'package:car_e_wallet_app/models/user.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class Wrapper extends StatelessWidget {
+class Wrapper extends StatefulWidget {
   const Wrapper({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final user = Provider.of<Customer?>(context);
-    print(user);
+  State<Wrapper> createState() => _WrapperState();
+}
 
-    if (user == null) {
-      return Authenticate();
+class _WrapperState extends State<Wrapper> {
+  Widget page = Authenticate();
+  final storage = FlutterSecureStorage();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkLogin();
+  }
+
+  void checkLogin() async {
+    String? token = await storage.read(key: 'token');
+    if (token != null) {
+      setState(() {
+        page = HomePage();
+      });
     } else {
-      return HomePage();
+      page = Authenticate();
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return page;
   }
 }

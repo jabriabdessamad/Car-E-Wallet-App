@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:car_e_wallet_app/authenticate/sign_in.dart';
 import 'package:car_e_wallet_app/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:car_e_wallet_app/services/auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:car_e_wallet_app/services/API/NetwrkHandler.dart';
+import 'package:car_e_wallet_app/services/API/NetworkHandler.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -30,6 +33,7 @@ class _RegisterState extends State<Register> {
   String? errorText;
   bool validate = false;
   bool circular = false;
+  final storage = new FlutterSecureStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -217,8 +221,42 @@ class _RegisterState extends State<Register> {
                                       "password": _passwordController.text
                                     };
                                     print(data);
-                                    await networkHandler.post(
-                                        "user/register", data);
+                                    var responseRegister = await networkHandler
+                                        .post("user/register", data);
+                                    //login after
+                                    if (responseRegister.statusCode == 200 ||
+                                        responseRegister.statusCode == 201) {
+                                      Map<String, String> data = {
+                                        "email": _emailController.text,
+                                        "password": _passwordController.text
+                                      };
+                                      var response = await networkHandler.post(
+                                          'user/login', data);
+                                      if (response.statusCode == 200 ||
+                                          response.statusCode == 201) {
+                                        Map<String, dynamic> output =
+                                            json.decode(response.body);
+                                        print(output["token"]);
+                                        await storage.write(
+                                            key: 'token',
+                                            value: output["token"]);
+                                        setState(() {
+                                          validate = true;
+                                          circular = false;
+                                        });
+                                        Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomePage()),
+                                            (route) => false);
+                                      } else {
+                                        Scaffold.of(context).showSnackBar(
+                                            SnackBar(
+                                                content:
+                                                    Text("Network Error")));
+                                      }
+                                    }
                                     setState(() {
                                       circular = false;
                                     });

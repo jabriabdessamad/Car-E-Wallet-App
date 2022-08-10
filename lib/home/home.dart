@@ -1,3 +1,4 @@
+import 'package:car_e_wallet_app/Restaurant-service/restaurant.dart';
 import 'package:car_e_wallet_app/authenticate/authenticate.dart';
 import 'package:car_e_wallet_app/chart.dart';
 import 'package:car_e_wallet_app/home/navbar.dart';
@@ -309,7 +310,7 @@ class _HomePageState extends State<HomePage> {
               scrollDirection: Axis.horizontal,
               children: [
                 serviceWidget("parking", "Parking\n", Parking()),
-                serviceWidget("restaurant", "Restaus\n", Parking()),
+                serviceWidget("restaurant", "Restaurant\n", Restaurant()),
                 serviceWidget("station de recharge", "Stations\n", Parking()),
                 serviceWidget("tram", "Tram\n", Parking()),
                 serviceWidget("bus", "Bus\n", Parking()),
@@ -331,7 +332,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Parking()),
+              MaterialPageRoute(builder: (context) => nextscreen),
             );
           },
           child: Container(
