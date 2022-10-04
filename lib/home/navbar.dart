@@ -4,11 +4,9 @@ import 'package:car_e_wallet_app/home/home.dart';
 import 'package:car_e_wallet_app/home/portfolio.dart';
 import 'package:car_e_wallet_app/home/settings.dart';
 import 'package:car_e_wallet_app/home/transaction.dart';
-import 'package:car_e_wallet_app/services/auth.dart';
-import 'package:car_e_wallet_app/wrapper.dart';
+import 'package:car_e_wallet_app/models/profile.model.dart';
+import 'package:car_e_wallet_app/services/API/NetworkHandler.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -18,7 +16,20 @@ class Navbar extends StatefulWidget {
 }
 
 class _NavbarState extends State<Navbar> {
-  final AuthService? _auth = AuthService();
+  NetworkHandler networkHandler = NetworkHandler();
+  ProfileModel profileModel = ProfileModel('', '', '');
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    fetchData();
+  }
+
+  void fetchData() async {
+    var response = NetworkHandler().get((''));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -144,11 +155,7 @@ class _NavbarState extends State<Navbar> {
             Container(
                 padding: EdgeInsets.all(20),
                 child: TextButton(
-                  onPressed: () async {
-                    await _auth!.SignOut();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Wrapper()));
-                  },
+                  onPressed: () async {},
                   child: Row(
                     children: [
                       Icon(

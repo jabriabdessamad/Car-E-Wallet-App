@@ -104,34 +104,34 @@ class _ProfileState extends State<Profile> {
                 SizedBox(height: 35),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    OutlineButton(
-                        padding: EdgeInsets.symmetric(horizontal: 50),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        onPressed: () {},
-                        child: Text(
-                          "CANCEL",
-                          style: TextStyle(
-                              fontSize: 14,
-                              letterSpacing: 2.2,
-                              color: Colors.black),
-                        )),
-                    RaisedButton(
-                      onPressed: () {},
-                      color: Color(0xFF613EEA),
-                      padding: EdgeInsets.symmetric(horizontal: 50),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Text(
-                        "SAVE",
-                        style: TextStyle(
-                            fontSize: 14,
-                            letterSpacing: 2.2,
-                            color: Colors.white),
-                      ),
-                    )
-                  ],
+                  //     children: [
+                  //       OutlineButton(
+                  //           padding: EdgeInsets.symmetric(horizontal: 50),
+                  //           shape: RoundedRectangleBorder(
+                  //               borderRadius: BorderRadius.circular(20)),
+                  //           onPressed: () {},
+                  //           child: Text(
+                  //             "CANCEL",
+                  //             style: TextStyle(
+                  //                 fontSize: 14,
+                  //                 letterSpacing: 2.2,
+                  //                 color: Colors.black),
+                  //           )),
+                  //       RaisedButton(
+                  //         onPressed: () {},
+                  //         color: Color(0xFF613EEA),
+                  //         padding: EdgeInsets.symmetric(horizontal: 50),
+                  //         shape: RoundedRectangleBorder(
+                  //             borderRadius: BorderRadius.circular(20)),
+                  //         child: Text(
+                  //           "SAVE",
+                  //           style: TextStyle(
+                  //               fontSize: 14,
+                  //               letterSpacing: 2.2,
+                  //               color: Colors.white),
+                  //         ),
+                  //       )
+                  //     ],
                 )
               ],
             ),

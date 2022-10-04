@@ -251,8 +251,8 @@ class _RegisterState extends State<Register> {
                                                     HomePage()),
                                             (route) => false);
                                       } else {
-                                        Scaffold.of(context).showSnackBar(
-                                            SnackBar(
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
                                                 content:
                                                     Text("Network Error")));
                                       }

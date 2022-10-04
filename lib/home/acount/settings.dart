@@ -123,7 +123,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   Text("Option 3"),
                 ]),
                 actions: [
-                  FlatButton(
+                  TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },

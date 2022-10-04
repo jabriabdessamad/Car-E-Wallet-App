@@ -141,7 +141,6 @@ class _ParkingServiceState extends State<ParkingService> {
           height: 70.0,
           child: Center(
             child: Stack(
-              overflow: Overflow.visible,
               children: <Widget>[
                 CustomPaint(
                   size: Size(500, 500),
