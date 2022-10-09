@@ -76,7 +76,6 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             buildNotificationOptionRow("New for you", true),
             buildNotificationOptionRow("Account activity", true),
-            buildNotificationOptionRow("Opportunity", false),
           ],
         ),
       ),

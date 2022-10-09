@@ -71,7 +71,7 @@ class _ProfileState extends State<Profile> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage("assets/avatar1.png"),
+                              image: AssetImage("assets/jabAvatar.png"),
                             )),
                       ),
                       Positioned(
@@ -97,8 +97,8 @@ class _ProfileState extends State<Profile> {
                 SizedBox(
                   height: 35,
                 ),
-                buildTextField("Full Name", "Ibrahim Kenia", false),
-                buildTextField("E-mail", "Ibrahimkenia2@gmail.com", false),
+                buildTextField("Full Name", "Jabri Abdessamad", false),
+                buildTextField("E-mail", "jabriabdessamad2@gmail.com", false),
                 buildTextField("Password", "*********", true),
                 buildTextField("Location", "Rabat,Maroc", false),
                 SizedBox(height: 35),

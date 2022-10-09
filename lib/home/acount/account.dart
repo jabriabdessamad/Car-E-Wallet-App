@@ -48,12 +48,15 @@ class _AccountState extends State<Account> {
               ),
               SizedBox(height: 12),
               Text(
-                'IBRAHIMKENIA2@GMAIL.COM',
+                'jabriabdessamad2@gmail.com',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.bold,
                     fontSize: 16),
+              ),
+              SizedBox(
+                height: 30,
               ),
               ListView(
                 children: [
@@ -62,16 +65,16 @@ class _AccountState extends State<Account> {
                       title: Text(
                         "MY PROFILE",
                         style: TextStyle(
-                            color: _textColor1,
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold),
                       ),
                       onTap: () {
                         setState(() {
-                          _cardColor2 = Colors.white;
-                          _textColor2 = Colors.black;
-                          _cardColor1 = Color(0xff613EEA);
-                          _textColor1 = Colors.white;
+                          // _cardColor2 = Colors.white;
+                          // _textColor2 = Colors.black;
+                          // _cardColor1 = Color(0xff613EEA);
+                          // _textColor1 = Colors.white;
                         });
                         Navigator.push(
                           context,
@@ -85,15 +88,15 @@ class _AccountState extends State<Account> {
                     child: ListTile(
                       title: Text("MY VEHICLES",
                           style: TextStyle(
-                              color: _textColor2,
+                              color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.bold)),
                       onTap: () {
                         setState(() {
-                          _cardColor1 = Colors.white;
-                          _textColor1 = Colors.black;
-                          _cardColor2 = Color(0xff613EEA);
-                          _textColor2 = Colors.white;
+                          // _cardColor1 = Colors.white;
+                          // _textColor1 = Colors.black;
+                          // _cardColor2 = Color(0xff613EEA);
+                          // _textColor2 = Colors.white;
                         });
                         Navigator.push(
                           context,
@@ -101,7 +104,7 @@ class _AccountState extends State<Account> {
                         );
                       },
                     ),
-                    color: _cardColor2,
+                    color: _cardColor1,
                   ),
                 ],
                 padding: EdgeInsets.all(20),

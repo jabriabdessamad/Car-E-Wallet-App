@@ -60,7 +60,7 @@ class _NavbarState extends State<Navbar> {
                             height: 60,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage('assets/avatar1.png')),
+                                  image: AssetImage('assets/jabAvatar.png')),
                               shape: BoxShape.circle,
                               color: Color(0xfff1f3f6),
                             ),
@@ -80,7 +80,7 @@ class _NavbarState extends State<Navbar> {
                                     fontWeight: FontWeight.w700),
                               ),
                               Text(
-                                "Rabat Agdal",
+                                "Rabat, Morocco ",
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w400,
