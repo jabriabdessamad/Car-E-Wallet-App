@@ -219,7 +219,7 @@ class _ParkingPaymentState extends State<ParkingPayment> {
                               Row(
                                 children: [
                                   Text(
-                                      '${entryDateTime.month.toString().padLeft(2, '0')}/${entryDateTime.day.toString().padLeft(2, '0')}  ${entryDateTime.hour.toString().padLeft(2, '0')}:${entryDateTime.minute.toString().padLeft(2, '0')}',
+                                      '${entryDateTime.month.toString().padLeft(2, '0')}/${entryDateTime.day.toString().padLeft(2, '0')}  22:30',
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w800,
@@ -228,8 +228,7 @@ class _ParkingPaymentState extends State<ParkingPayment> {
                                     Icons.arrow_right_alt,
                                     size: 30,
                                   ),
-                                  Text(
-                                      '${exitDateTime.month.toString().padLeft(2, '0')}/${exitDateTime.day.toString().padLeft(2, '0')}  ${exitDateTime.hour.toString().padLeft(2, '0')}:${exitDateTime.minute.toString().padLeft(2, '0')}',
+                                  Text('11/09 00:30',
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w800,

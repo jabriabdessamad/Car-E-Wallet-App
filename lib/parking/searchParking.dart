@@ -201,7 +201,7 @@ class _SearchParkingState extends State<SearchParking> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Hay agdal',
+                                'Hay Riad',
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 18,
@@ -230,14 +230,14 @@ class _SearchParkingState extends State<SearchParking> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'marina ',
+                                'Al Irfane ',
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w700),
                               ),
                               Text(
-                                'Casablanca',
+                                'Rabat',
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 15,

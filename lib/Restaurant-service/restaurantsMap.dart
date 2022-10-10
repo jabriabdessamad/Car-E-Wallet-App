@@ -32,38 +32,38 @@ class _RestaurantsMapState extends State<RestaurantsMap> {
             MapWidget(
               duration: widget.duration,
             ),
-            Positioned(
-                left: (MediaQuery.of(context).size.width - 340) / 2,
-                top: 30,
-                child: Container(
-                  height: 55,
-                  width: 340,
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    borderRadius: BorderRadius.all(Radius.circular(7)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromARGB(255, 97, 97, 97).withOpacity(0.3),
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Text(
-                              widget.place ?? '',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
-                            )),
-                      ]),
-                )),
+            // Positioned(
+            //     left: (MediaQuery.of(context).size.width - 340) / 2,
+            //     top: 30,
+            //     child: Container(
+            //       height: 55,
+            //       width: 340,
+            //       decoration: BoxDecoration(
+            //         color: Color.fromARGB(255, 255, 255, 255),
+            //         borderRadius: BorderRadius.all(Radius.circular(7)),
+            //         boxShadow: [
+            //           BoxShadow(
+            //             color: Color.fromARGB(255, 97, 97, 97).withOpacity(0.3),
+            //             spreadRadius: 2,
+            //             blurRadius: 2,
+            //             offset: Offset(0, 3), // changes position of shadow
+            //           ),
+            //         ],
+            //       ),
+            //       child: Row(
+            //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //           children: [
+            //             Container(
+            //                 padding: EdgeInsets.only(left: 20),
+            //                 child: Text(
+            //                   widget.place ?? '',
+            //                   style: TextStyle(
+            //                     color: Colors.black,
+            //                     fontSize: 20,
+            //                   ),
+            //                 )),
+            //           ]),
+            //     )),
           ]),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -92,7 +92,7 @@ class _RestaurantsMapState extends State<RestaurantsMap> {
                   Icons.history,
                   size: 30,
                 ),
-                label: 'My parking',
+                label: 'History',
               ),
               BottomNavigationBarItem(
                 icon: Icon(

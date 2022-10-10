@@ -33,12 +33,12 @@ class _ChartState extends State<Chart> {
             ));
 
     final List<ChartData> chartData = [
-      ChartData('jan', 25),
-      ChartData('fab', 43),
-      ChartData('mar', 25),
-      ChartData('apr', 155),
-      ChartData('may', 27),
-      ChartData('jun', 70)
+      ChartData('May', 25),
+      ChartData('Jun', 43),
+      ChartData('Jul', 25),
+      ChartData('Aug', 155),
+      ChartData('Sep', 27),
+      ChartData('Oct', 70)
     ];
     return Scaffold(
         body: SfCartesianChart(

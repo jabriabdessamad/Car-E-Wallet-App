@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent, //or set color with: Color(0xFF0000FF)
+      statusBarColor: Color.fromARGB(
+          255, 65, 26, 12), //or set color with: Color(0xFF0000FF)
     ));
     return StreamProvider<Customer?>.value(
       catchError: (User, NewUser) => null,

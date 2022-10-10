@@ -140,7 +140,7 @@ class _BookingInfoState extends State<BookingInfo> {
                     Padding(
                       padding: const EdgeInsets.only(right: 30),
                       child: Text(
-                        '3:30 PM',
+                        '10/09  22:30 PM',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 15,
@@ -158,7 +158,7 @@ class _BookingInfoState extends State<BookingInfo> {
                     Padding(
                       padding: const EdgeInsets.only(left: 30),
                       child: Text(
-                        'Check-out Time (Est):',
+                        'Check-out Time :',
                         style: TextStyle(
                             color: Colors.grey,
                             fontSize: 15,
@@ -168,7 +168,7 @@ class _BookingInfoState extends State<BookingInfo> {
                     Padding(
                       padding: const EdgeInsets.only(right: 30),
                       child: Text(
-                        '6:30 PM',
+                        '11/09  00:30 PM',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 15,

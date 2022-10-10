@@ -147,107 +147,107 @@ class _SearchRestaurantState extends State<SearchRestaurant> {
                 ],
               ),
               SizedBox(
-                height: 25,
+                height: 250,
               ),
-              Container(
-                height: screen_height * 0.3,
-                width: screen_width * 0.9,
-                decoration: BoxDecoration(
-                  color: Colors.grey[100],
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromARGB(255, 97, 97, 97).withOpacity(0.2),
-                      spreadRadius: 2,
-                      blurRadius: 3,
-                      offset: Offset(0, -3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Rabat Agdal',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                              Text(
-                                'Rabat',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ]),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 1,
-                        width: screen_width,
-                        color: Colors.grey,
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Hay agdal',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                              Text(
-                                'Rabat',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ]),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 1,
-                        width: screen_width,
-                        color: Colors.grey,
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'marina ',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                              Text(
-                                'Casablanca',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ]),
-                      ),
-                    ]),
-              ),
+              // Container(
+              //   height: screen_height * 0.3,
+              //   width: screen_width * 0.9,
+              //   decoration: BoxDecoration(
+              //     color: Colors.grey[100],
+              //     borderRadius: BorderRadius.all(Radius.circular(15)),
+              //     boxShadow: [
+              //       BoxShadow(
+              //         color: Color.fromARGB(255, 97, 97, 97).withOpacity(0.2),
+              //         spreadRadius: 2,
+              //         blurRadius: 3,
+              //         offset: Offset(0, -3), // changes position of shadow
+              //       ),
+              //     ],
+              //   ),
+              //   child: Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         Container(
+              //           padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+              //           child: Column(
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               children: [
+              //                 Text(
+              //                   'Rabat Agdal',
+              //                   style: TextStyle(
+              //                       color: Colors.black,
+              //                       fontSize: 18,
+              //                       fontWeight: FontWeight.w700),
+              //                 ),
+              //                 Text(
+              //                   'Rabat',
+              //                   style: TextStyle(
+              //                       color: Colors.black,
+              //                       fontSize: 15,
+              //                       fontWeight: FontWeight.w500),
+              //                 )
+              //               ]),
+              //         ),
+              //         SizedBox(
+              //           height: 10,
+              //         ),
+              //         Container(
+              //           height: 1,
+              //           width: screen_width,
+              //           color: Colors.grey,
+              //         ),
+              //         Container(
+              //           padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+              //           child: Column(
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               children: [
+              //                 Text(
+              //                   'Hay agdal',
+              //                   style: TextStyle(
+              //                       color: Colors.black,
+              //                       fontSize: 18,
+              //                       fontWeight: FontWeight.w700),
+              //                 ),
+              //                 Text(
+              //                   'Rabat',
+              //                   style: TextStyle(
+              //                       color: Colors.black,
+              //                       fontSize: 15,
+              //                       fontWeight: FontWeight.w500),
+              //                 )
+              //               ]),
+              //         ),
+              //         SizedBox(
+              //           height: 10,
+              //         ),
+              //         Container(
+              //           height: 1,
+              //           width: screen_width,
+              //           color: Colors.grey,
+              //         ),
+              //         Container(
+              //           padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+              //           child: Column(
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               children: [
+              //                 Text(
+              //                   'marina ',
+              //                   style: TextStyle(
+              //                       color: Colors.black,
+              //                       fontSize: 18,
+              //                       fontWeight: FontWeight.w700),
+              //                 ),
+              //                 Text(
+              //                   'Casablanca',
+              //                   style: TextStyle(
+              //                       color: Colors.black,
+              //                       fontSize: 15,
+              //                       fontWeight: FontWeight.w500),
+              //                 )
+              //               ]),
+              //         ),
+              //       ]),
+              // ),
               SizedBox(
                 height: screen_height * 0.1,
               ),
@@ -327,7 +327,7 @@ class _SearchRestaurantState extends State<SearchRestaurant> {
                   Icons.history,
                   size: 30,
                 ),
-                label: 'My parking',
+                label: 'History',
               ),
               BottomNavigationBarItem(
                 icon: Icon(

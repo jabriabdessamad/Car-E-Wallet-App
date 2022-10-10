@@ -87,7 +87,7 @@ class _CheckoutState extends State<Checkout> {
                             height: 5,
                           ),
                           Text(
-                            'HandCrafted Burger',
+                            'Chicken Burger',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 17,
@@ -97,7 +97,7 @@ class _CheckoutState extends State<Checkout> {
                             height: 5,
                           ),
                           Text(
-                            '2 x 75MAD ',
+                            '1 x 120MAD ',
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 15,
@@ -108,7 +108,7 @@ class _CheckoutState extends State<Checkout> {
                       Padding(
                         padding: const EdgeInsets.only(right: 15),
                         child: Text(
-                          '150 MAD',
+                          '120 MAD',
                           style: TextStyle(
                               color: Colors.orange,
                               fontSize: 15,
@@ -147,7 +147,7 @@ class _CheckoutState extends State<Checkout> {
                             height: 5,
                           ),
                           Text(
-                            '1 x 75MAD ',
+                            '1 x 80MAD ',
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 15,
@@ -158,7 +158,7 @@ class _CheckoutState extends State<Checkout> {
                       Padding(
                         padding: const EdgeInsets.only(right: 15),
                         child: Text(
-                          '75 MAD',
+                          '80 MAD',
                           style: TextStyle(
                               color: Colors.orange,
                               fontSize: 15,
@@ -199,7 +199,7 @@ class _CheckoutState extends State<Checkout> {
                       Padding(
                         padding: const EdgeInsets.only(right: 15),
                         child: Text(
-                          '225 MAD',
+                          '200 MAD',
                           style: TextStyle(
                               color: Colors.orange,
                               fontSize: 19,
@@ -230,7 +230,7 @@ class _CheckoutState extends State<Checkout> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('TOTAL  225 MAD',
+                          Text('TOTAL  200 MAD',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,

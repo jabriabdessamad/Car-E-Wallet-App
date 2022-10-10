@@ -192,8 +192,7 @@ class _ParkingInfoState extends State<ParkingInfo> {
                           padding: EdgeInsets.only(left: 10),
                           child: Row(
                             children: [
-                              Text(
-                                  '${entryDateTime.month.toString().padLeft(2, '0')}/${entryDateTime.day.toString().padLeft(2, '0')}  ${entryDateTime.hour.toString().padLeft(2, '0')}:${entryDateTime.minute.toString().padLeft(2, '0')}',
+                              Text('10/09   22:30',
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w800,
@@ -202,8 +201,7 @@ class _ParkingInfoState extends State<ParkingInfo> {
                                 Icons.arrow_right_alt,
                                 size: 30,
                               ),
-                              Text(
-                                  '${exitDateTime.month.toString().padLeft(2, '0')}/${exitDateTime.day.toString().padLeft(2, '0')}  ${exitDateTime.hour.toString().padLeft(2, '0')}:${exitDateTime.minute.toString().padLeft(2, '0')}',
+                              Text('11/09   00:30',
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w800,
@@ -243,7 +241,7 @@ class _ParkingInfoState extends State<ParkingInfo> {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text('20 DH',
+                                Text('10 DH',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w900,

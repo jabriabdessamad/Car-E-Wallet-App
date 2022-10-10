@@ -97,20 +97,6 @@ class CarDetails extends StatelessWidget {
               ]),
         ),
         SizedBox(height: 10),
-        RichText(
-          text: TextSpan(
-            style: TextStyle(fontSize: 16),
-            children: [
-              TextSpan(
-                  text: currentCar.price.toString(),
-                  style: TextStyle(color: Colors.grey[20])),
-              TextSpan(
-                text: "/day",
-                style: TextStyle(color: Colors.grey),
-              )
-            ],
-          ),
-        ),
       ],
     );
   }
@@ -272,7 +258,7 @@ class SheetContainer extends StatelessWidget {
 
   drawerHandle() {
     return Container(
-      margin: EdgeInsets.only(bottom: 25),
+      margin: EdgeInsets.only(bottom: 10),
       height: 3,
       width: 65,
       decoration: BoxDecoration(
@@ -282,7 +268,7 @@ class SheetContainer extends StatelessWidget {
 
   specifications(double sheetItemHeight) {
     return Container(
-      padding: EdgeInsets.only(top: 15, left: 40),
+      padding: EdgeInsets.only(top: 15, left: 20, right: 20),
       child: Column(
         children: [
           Text(
@@ -290,7 +276,7 @@ class SheetContainer extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
-              fontSize: 10,
+              fontSize: 15,
             ),
           ),
           Container(
@@ -314,7 +300,7 @@ class SheetContainer extends StatelessWidget {
 
   features(double sheetItemHeight) {
     return Container(
-      padding: EdgeInsets.only(top: 15, left: 40),
+      padding: EdgeInsets.only(top: 15, left: 20, right: 20),
       child: Column(
         children: [
           Text(
@@ -322,7 +308,7 @@ class SheetContainer extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
-              fontSize: 10,
+              fontSize: 15,
             ),
           ),
           Container(
@@ -346,15 +332,15 @@ class SheetContainer extends StatelessWidget {
 
   offerDetails(double sheetItemHeight) {
     return Container(
-      padding: EdgeInsets.only(top: 15, left: 40),
+      padding: EdgeInsets.only(top: 15, left: 20, right: 20),
       child: Column(
         children: [
           Text(
-            "Offer Details",
+            "Details",
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
-              fontSize: 10,
+              fontSize: 15,
             ),
           ),
           Container(

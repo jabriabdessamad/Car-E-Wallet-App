@@ -92,7 +92,7 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                 Container(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'KFC Rabat',
+                      'KFC Rabat Agdal',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
@@ -101,7 +101,7 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                 Container(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Home cook . Fast Food . Burger',
+                      'Order & home delivery in Rabat.',
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 15,
@@ -121,7 +121,7 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                       height: screen_height * 0.04,
                       width: screen_width * 0.3,
                       child: Text(
-                        "Home Cook",
+                        "Free Delivery",
                         style: TextStyle(
                             color: Colors.green,
                             fontSize: 16,
@@ -131,22 +131,6 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                     SizedBox(
                       width: 10,
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 1, color: Colors.grey),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                      height: screen_height * 0.04,
-                      width: screen_width * 0.3,
-                      child: Text(
-                        "Free Delivery",
-                        style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    )
                   ],
                 ),
                 SizedBox(
@@ -170,7 +154,7 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                   ],
                 ),
                 SizedBox(
-                  height: screen_height * 0.03,
+                  height: screen_height * 0.08,
                 ),
                 Container(
                   height: 0.2,
@@ -259,10 +243,26 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  RestauranPopulartItem(),
-                  RestauranPopulartItem(),
-                  RestauranPopulartItem(),
-                  RestauranPopulartItem()
+                  RestauranPopulartItem(
+                    image: 'assets/burger.jpg',
+                    plate: 'Burger',
+                    description: 'cheese burger',
+                  ),
+                  RestauranPopulartItem(
+                    image: 'assets/salad.jpg',
+                    plate: 'Salad Meal',
+                    description: 'Fried chicken',
+                  ),
+                  RestauranPopulartItem(
+                    image: 'assets/kfc_image.png',
+                    plate: 'fried chicken',
+                    description: 'Bucket meal',
+                  ),
+                  RestauranPopulartItem(
+                    image: 'assets/kfc_image.png',
+                    plate: 'Bucket Meal',
+                    description: 'Fried chicken',
+                  )
                 ],
               ),
             ),
@@ -331,10 +331,12 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                 visible: fishVisible,
                 child: Column(
                   children: [
-                    RestaurantItem(),
-                    RestaurantItem(),
-                    RestaurantItem(),
-                    RestaurantItem(),
+                    RestaurantItem(
+                      image: 'assets/burger.jpg',
+                      plate: 'Burger',
+                      description: 'cheese burger',
+                      price: '75',
+                    ),
                   ],
                 )),
             InkWell(
@@ -384,10 +386,18 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                 visible: burgerVisible,
                 child: Column(
                   children: [
-                    RestaurantItem(),
-                    RestaurantItem(),
-                    RestaurantItem(),
-                    RestaurantItem(),
+                    RestaurantItem(
+                      image: 'assets/burger.jpg',
+                      plate: 'Burger',
+                      description: 'cheese burger',
+                      price: '120 DH',
+                    ),
+                    RestaurantItem(
+                      image: 'assets/kfcburger.png',
+                      plate: ' Chicken Burger',
+                      description: 'fried chicken  burger',
+                      price: '80 DH',
+                    ),
                   ],
                 )),
             InkWell(
@@ -437,10 +447,12 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                 visible: pastaVisible,
                 child: Column(
                   children: [
-                    RestaurantItem(),
-                    RestaurantItem(),
-                    RestaurantItem(),
-                    RestaurantItem(),
+                    RestaurantItem(
+                      image: 'assets/burger.jpg',
+                      plate: 'Burger',
+                      description: 'cheese burger',
+                      price: '75',
+                    ),
                   ],
                 )),
             InkWell(
@@ -490,10 +502,12 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                 visible: pizzaVisible,
                 child: Column(
                   children: [
-                    RestaurantItem(),
-                    RestaurantItem(),
-                    RestaurantItem(),
-                    RestaurantItem(),
+                    RestaurantItem(
+                      image: 'assets/burger.jpg',
+                      plate: 'Burger',
+                      description: 'cheese burger',
+                      price: '75 DH',
+                    ),
                   ],
                 )),
             SizedBox(
@@ -524,7 +538,7 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('5 items',
+                          Text('2 items',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -581,7 +595,18 @@ class _RestaurantMenuState extends State<RestaurantMenu> {
 }
 
 class RestaurantItem extends StatefulWidget {
-  const RestaurantItem({Key? key}) : super(key: key);
+  final String image;
+  final String plate;
+  final String description;
+  final String price;
+
+  const RestaurantItem(
+      {Key? key,
+      required this.image,
+      required this.plate,
+      required this.description,
+      required this.price})
+      : super(key: key);
 
   @override
   State<RestaurantItem> createState() => _RestaurantItemState();
@@ -610,7 +635,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
                     padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Burger',
+                      widget.plate,
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
@@ -620,7 +645,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
                     padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Home cook . Fast Food ',
+                      widget.description,
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 13,
@@ -634,7 +659,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
                     Container(
                         padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
                         child: Text(
-                          "75 MAD",
+                          widget.price,
                           style: TextStyle(
                               fontSize: 17,
                               color: Colors.black,
@@ -672,7 +697,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage('assets/kfcburger.png'),
+                    image: AssetImage(widget.image),
                   )),
             ),
           ]),
@@ -683,7 +708,15 @@ class _RestaurantItemState extends State<RestaurantItem> {
 }
 
 class RestauranPopulartItem extends StatefulWidget {
-  const RestauranPopulartItem({Key? key}) : super(key: key);
+  final String image;
+  final String plate;
+  final String description;
+  const RestauranPopulartItem(
+      {Key? key,
+      required this.image,
+      required this.plate,
+      required this.description})
+      : super(key: key);
 
   @override
   State<RestauranPopulartItem> createState() => _RestauranPopulartItemState();
@@ -709,7 +742,7 @@ class _RestauranPopulartItemState extends State<RestauranPopulartItem> {
               borderRadius: BorderRadius.vertical(
                   top: Radius.circular(15), bottom: Radius.zero),
               image: DecorationImage(
-                  image: AssetImage('assets/kfc_image.png'), fit: BoxFit.fill),
+                  image: AssetImage(widget.image), fit: BoxFit.fill),
             ),
           ),
           Container(
@@ -718,7 +751,7 @@ class _RestauranPopulartItemState extends State<RestauranPopulartItem> {
               Container(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Cappuccino',
+                    widget.plate,
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 12,
@@ -727,7 +760,7 @@ class _RestauranPopulartItemState extends State<RestauranPopulartItem> {
               Container(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Home cook . Fast Food ',
+                    widget.description,
                     style: TextStyle(
                         color: Colors.grey,
                         fontSize: 10,

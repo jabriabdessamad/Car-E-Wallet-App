@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 
   final AuthService _auth = AuthService();
-  String dropdownValue = 'Jan - Feb';
+  String dropdownValue = '6 month';
 
   @override
   Widget build(BuildContext context) {
@@ -84,16 +84,17 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Current Balance',
+                        Text('Balance',
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black)),
                         Text(
-                          '3000 \$',
+                          '3000 CEW',
                           style: TextStyle(
-                              fontSize: 30,
+                              fontSize: 25,
                               fontWeight: FontWeight.w600,
                               color: Colors.black),
                         )
@@ -227,13 +228,13 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                             shape: BoxShape.circle, color: Colors.white),
                         child: FaIcon(
-                          FontAwesomeIcons.history,
+                          FontAwesomeIcons.exchangeAlt,
                           color: Color(0xff38267E),
                         ),
                       ),
                     ),
                     Text(
-                      'Historique',
+                      'Transactions',
                       style: TextStyle(
                           fontSize: 15,
                           color: Color(0xff613EEA),
@@ -274,10 +275,10 @@ class _HomePageState extends State<HomePage> {
                     });
                   },
                   items: <String>[
-                    'Jan - Feb',
-                    'Feb - Mar',
-                    'Mar - Apr',
-                    'Apr - May'
+                    '6 month',
+                    '',
+                    '',
+                    '',
                   ].map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
@@ -311,9 +312,8 @@ class _HomePageState extends State<HomePage> {
               children: [
                 serviceWidget("parking", "Parking\n", Parking()),
                 serviceWidget("restaurant", "Restaurant\n", Restaurant()),
-                serviceWidget("station de recharge", "Stations\n", Parking()),
-                serviceWidget("tram", "Tram\n", Parking()),
-                serviceWidget("bus", "Bus\n", Parking()),
+                serviceWidget("gasStations", "Stations\n", Parking()),
+                serviceWidget("freeway", "FreeWay\n", Parking()),
                 serviceWidget("more", "More\n", Parking()),
               ],
             ),
