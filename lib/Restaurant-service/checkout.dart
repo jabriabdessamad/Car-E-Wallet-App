@@ -230,7 +230,7 @@ class _CheckoutState extends State<Checkout> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('TOTAL  200 MAD',
+                          Text('TOTAL 200 MAD',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
