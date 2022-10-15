@@ -17,16 +17,16 @@ class _CheckoutState extends State<Checkout> {
           body: SingleChildScrollView(
         child: Container(
           child: Column(children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_back,
                     size: 26,
                     color: Color.fromARGB(255, 14, 158, 69),
@@ -34,7 +34,7 @@ class _CheckoutState extends State<Checkout> {
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 Container(
-                  child: Text(
+                  child: const Text(
                     'Checkout',
                     style: TextStyle(
                         color: Colors.black,
@@ -52,9 +52,9 @@ class _CheckoutState extends State<Checkout> {
               width: screen_width * 0.9,
               decoration: BoxDecoration(
                   color: Colors.grey[100],
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
+                  borderRadius: const BorderRadius.all(Radius.circular(15))),
               child: Row(children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
@@ -66,7 +66,7 @@ class _CheckoutState extends State<Checkout> {
                 )
               ]),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -74,7 +74,7 @@ class _CheckoutState extends State<Checkout> {
               width: screen_width * 0.9,
               decoration: BoxDecoration(
                   color: Colors.grey[100],
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
+                  borderRadius: const BorderRadius.all(Radius.circular(15))),
               child: Container(
                 padding: EdgeInsets.all(10),
                 child: Row(
@@ -82,7 +82,7 @@ class _CheckoutState extends State<Checkout> {
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           SizedBox(
                             height: 5,
                           ),
@@ -105,7 +105,7 @@ class _CheckoutState extends State<Checkout> {
                           ),
                         ],
                       ),
-                      Padding(
+                      const Padding(
                         padding: const EdgeInsets.only(right: 15),
                         child: Text(
                           '120 MAD',
@@ -119,20 +119,20 @@ class _CheckoutState extends State<Checkout> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 5),
+              margin: const EdgeInsets.only(top: 5),
               height: screen_height * 0.15,
               width: screen_width * 0.9,
               decoration: BoxDecoration(
                   color: Colors.grey[100],
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
+                  borderRadius: const BorderRadius.all(Radius.circular(15))),
               child: Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           SizedBox(
                             height: 5,
                           ),
@@ -147,7 +147,7 @@ class _CheckoutState extends State<Checkout> {
                             height: 5,
                           ),
                           Text(
-                            '1 x 80MAD ',
+                            '1x 80MAD ',
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 15,
