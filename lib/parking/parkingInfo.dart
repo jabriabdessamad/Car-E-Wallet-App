@@ -224,7 +224,7 @@ class _ParkingInfoState extends State<ParkingInfo> {
                     Container(
                       height: screen_height * 0.09,
                       width: screen_width * 0.6,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: Column(
@@ -234,14 +234,14 @@ class _ParkingInfoState extends State<ParkingInfo> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text('${widget.duration} hour :',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w800,
                                         color: Colors.black)),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
-                                Text('10 DH',
+                                const Text('10 DH',
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w900,
