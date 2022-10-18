@@ -196,10 +196,10 @@ class _SearchParkingState extends State<SearchParking> {
                         color: Colors.grey,
                       ),
                       Container(
-                        padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: const [
                               Text(
                                 'Hay Riad',
                                 style: TextStyle(
@@ -216,7 +216,7 @@ class _SearchParkingState extends State<SearchParking> {
                               )
                             ]),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
@@ -225,10 +225,10 @@ class _SearchParkingState extends State<SearchParking> {
                         color: Colors.grey,
                       ),
                       Container(
-                        padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: const [
                               Text(
                                 'Al Irfane ',
                                 style: TextStyle(

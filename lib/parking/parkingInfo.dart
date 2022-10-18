@@ -268,7 +268,7 @@ class _ParkingInfoState extends State<ParkingInfo> {
                           style: TextStyle(
                               fontSize: screen_height * 0.025,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFF806A6A))),
+                              color: const Color(0xFF806A6A))),
                     ),
                   ],
                 ),
