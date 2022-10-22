@@ -85,7 +85,7 @@ class _ParkingsMapState extends State<ParkingsMap> {
                                 )
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Container(
@@ -93,7 +93,7 @@ class _ParkingsMapState extends State<ParkingsMap> {
                               width: 1,
                               color: Colors.black,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Column(
